@@ -1,0 +1,842 @@
+Plecs {
+  Name          "Buck converter - inductor as a current source -- thermal - Co"
+"py"
+  Version       "4.4"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  StopTime      "1.0"
+  Timeout       ""
+  Solver        "dopri"
+  MaxStep       "1e-3"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  InitializationCommands ""
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Schematic {
+    Location      [0, 27; 1366, 683]
+    ZoomFactor    1.30957
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          DCVoltageSource
+      Name          "V_dc"
+      Show          on
+      Position      [265, 310]
+      Direction     down
+      Flipped       on
+      Parameter {
+        Variable      "V"
+        Value         "5"
+        Show          on
+      }
+    }
+    Component {
+      Type          PulseGenerator
+      Name          "Pulse\nGenerator"
+      Show          on
+      Position      [375, 240]
+      Direction     right
+      Flipped       off
+      Parameter {
+        Variable      "Hi"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Lo"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "f"
+        Value         "1000"
+        Show          on
+      }
+      Parameter {
+        Variable      "DutyCycle"
+        Value         "0.5"
+        Show          on
+      }
+      Parameter {
+        Variable      "Delay"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Igbt
+      Name          "IGBT1"
+      Show          on
+      Position      [495, 240]
+      Direction     up
+      Flipped       off
+      Parameter {
+        Variable      "Vf"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "s_init"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         "file:description Buck converter - inductor as a current"
+" source -- thermal"
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vigbt"
+      Show          on
+      Position      [580, 235]
+      Direction     up
+      Flipped       off
+    }
+    Component {
+      Type          Scope
+      Name          "Scope"
+      Show          on
+      Position      [865, 290]
+      Direction     up
+      Flipped       off
+      Location      [0, 27; 1366, 712]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAIQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAVWAAAAZfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVYAAABQAP///wAABVYAAAIpAAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
+"QAAAGQAAAAEAAAAZAAAAAcAAABkAAAABgAAAGQAAAABAAAAZAAAAAMAAABkAAAAAgAAAGQAAAAJAA"
+"AAZAAAAAgAAABkAAAFRQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC+AAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"ASHAAAAAQAAAAAAAAPoAAAAACc="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAQAAAAEB/////1VVAAAAAAAAAAEAAAABAQAAA"
+"AEAAAABAAAAAQAAAAEAAAABAQAAAAEAAAABP/AAAAAAAAAAAAABAAAAAQAAAAABAAAAAQAAAAEAAA"
+"ABAf//AAAAAP//AAAAAAABAAAAAQEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAABAAAAAT/wAAAAAAA"
+"AAAAAAQAAAAEAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      Axes          "3"
+      TimeRange     "0.0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "0"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    ""
+      ShowLegend    "1"
+      Axis {
+        Name          "Conductivity"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "Temperature"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "Power"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          Diode
+      Name          "D1"
+      Show          on
+      Position      [495, 405]
+      Direction     down
+      Flipped       off
+      Parameter {
+        Variable      "Vf"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "Probe"
+      Show          on
+      Position      [650, 80]
+      Direction     right
+      Flipped       off
+    }
+    Component {
+      Type          HeatSink
+      Name          "Heat Sink"
+      Show          off
+      Position      [500, 230]
+      Direction     up
+      Flipped       off
+      Frame         [-37, -37; 37, 37]
+      Parameter {
+        Variable      "Cth"
+        Value         "0.005"
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         "25"
+        Show          off
+      }
+      Terminal {
+        Type          HeatPort
+        Position      [-15, -42]
+        Direction     up
+      }
+    }
+    Component {
+      Type          ThermalResistor
+      Name          "Rth"
+      Show          on
+      Position      [525, 130]
+      Direction     right
+      Flipped       on
+      Parameter {
+        Variable      "Rth"
+        Value         "1"
+        Show          on
+      }
+    }
+    Component {
+      Type          ConstantTemperatureGnd
+      Name          "TconstG"
+      Show          on
+      Position      [620, 150]
+      Direction     down
+      Flipped       on
+      Parameter {
+        Variable      "T"
+        Value         "25"
+        Show          on
+      }
+    }
+    Component {
+      Type          SignalDemux
+      Name          "Demux"
+      Show          off
+      Position      [720, 195]
+      Direction     right
+      Flipped       on
+      Parameter {
+        Variable      "Width"
+        Value         "3"
+        Show          off
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope1"
+      Show          on
+      Position      [800, 360]
+      Direction     up
+      Flipped       off
+      Location      [1366, 23; 3286, 1020]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAANQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAeAAAAAmfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABQAP///wAAB4AAAAMtAAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAACwAAAAAAAAABAAAAAgAAAAQAA"
+"AAGAAAAAwAAAAUAAAAHAAAACAAAAAkAAAAKAAAACwAAAAAAAAABAAAAAgAAAAUAAAADAAAABgAAAA"
+"QAAAAHAAAACAAAAAkAAAAKAAAACzACAAAAAwAAAAYAAABkAAAAAwAAAGQAAAAJAAAAZAAAB28AAAA"
+"LAQAAAQAAAAAAAAAAAAAAAGT/////AAAAgQAAAAAAAAALAAAAvQAAAAEAAAAAAAAAZAAAAAEAAAAA"
+"AAAAZAAAAAEAAAAAAAAAZAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAZAAAAAEAA"
+"AAAAAAAZAAAAAEAAAAAAAAAZAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAEWgAAAAEAAAAAAAAD6AAAAA"
+"An"
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAABAAAAAQH//6qqAAAAAAAAAAAAAQAAAAEBAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAQAAAA"
+"E/8AAAAAAAAAAAAAEAAAABAAAAAAEAAAABAAAAAQAAAAEB//8AAAAA//8AAAAAAAEAAAABAQAAAAE"
+"AAAABAAAAAQAAAAEAAAABAAAAAAEAAAABP/AAAAAAAAAAAAABAAAAAQAAAAABAAAAAQAAAAEAAAAB"
+"Af////9VVQAAAAAAAAABAAAAAQEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAABAAAAAT/wAAAAAAAAA"
+"AAAAQAAAAEAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      Axes          "5"
+      TimeRange     "0.0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "1"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    ""
+      ShowLegend    "1"
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "IGBT voltage"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "Inductor current"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "Vout across cap"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          HeatFlowMeter
+      Name          "Wm"
+      Show          on
+      Position      [580, 130]
+      Direction     left
+      Flipped       off
+    }
+    Component {
+      Type          Inductor
+      Name          "L1"
+      Show          on
+      Position      [525, 330]
+      Direction     right
+      Flipped       off
+      Parameter {
+        Variable      "L"
+        Value         "0.001"
+        Show          off
+      }
+      Parameter {
+        Variable      "i_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Capacitor
+      Name          "C1"
+      Show          on
+      Position      [590, 380]
+      Direction     down
+      Flipped       on
+      Parameter {
+        Variable      "C"
+        Value         "100e-6"
+        Show          off
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R1"
+      Show          on
+      Position      [610, 380]
+      Direction     up
+      Flipped       off
+      Parameter {
+        Variable      "R"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vout"
+      Show          on
+      Position      [670, 390]
+      Direction     up
+      Flipped       off
+    }
+    Component {
+      Type          Ammeter
+      Name          "Am1"
+      Show          on
+      Position      [565, 330]
+      Direction     left
+      Flipped       off
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vout1"
+      Show          on
+      Position      [315, 355]
+      Direction     up
+      Flipped       off
+    }
+    Component {
+      Type          SignalMux
+      Name          "Mux"
+      Show          off
+      Position      [715, 450]
+      Direction     right
+      Flipped       off
+      Parameter {
+        Variable      "Width"
+        Value         "2"
+        Show          off
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "D1"
+      SrcTerminal   1
+      Points        [495, 440]
+      Branch {
+        Points        [590, 440]
+        Branch {
+          Points        [610, 440; 610, 410]
+          Branch {
+            DstComponent  "R1"
+            DstTerminal   2
+          }
+          Branch {
+            DstComponent  "Vout"
+            DstTerminal   2
+          }
+        }
+        Branch {
+          DstComponent  "C1"
+          DstTerminal   2
+        }
+      }
+      Branch {
+        Points        [265, 440; 265, 390]
+        Branch {
+          DstComponent  "V_dc"
+          DstTerminal   2
+        }
+        Branch {
+          Points        [315, 390]
+          DstComponent  "Vout1"
+          DstTerminal   2
+        }
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Pulse\nGenerator"
+      SrcTerminal   1
+      DstComponent  "IGBT1"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "IGBT1"
+      SrcTerminal   1
+      Points        [495, 180]
+      Branch {
+        Points        [265, 180; 265, 265]
+        Branch {
+          DstComponent  "V_dc"
+          DstTerminal   1
+        }
+        Branch {
+          Points        [315, 265]
+          DstComponent  "Vout1"
+          DstTerminal   1
+        }
+      }
+      Branch {
+        Points        [580, 180]
+        DstComponent  "Vigbt"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          HeatPipe
+      SrcComponent  "Rth"
+      SrcTerminal   1
+      Points        [485, 130]
+      DstComponent  "Heat Sink"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Probe"
+      SrcTerminal   1
+      Points        [680, 80; 680, 195]
+      DstComponent  "Demux"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Demux"
+      SrcTerminal   2
+      Points        [760, 185; 760, 280]
+      DstComponent  "Scope"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Demux"
+      SrcTerminal   3
+      Points        [755, 195; 755, 290]
+      DstComponent  "Scope"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Demux"
+      SrcTerminal   4
+      Points        [750, 205; 750, 300]
+      DstComponent  "Scope"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vigbt"
+      SrcTerminal   3
+      Points        [700, 235; 700, 350]
+      DstComponent  "Scope1"
+      DstTerminal   2
+    }
+    Connection {
+      Type          HeatPipe
+      SrcComponent  "Wm"
+      SrcTerminal   2
+      DstComponent  "TconstG"
+      DstTerminal   1
+    }
+    Connection {
+      Type          HeatPipe
+      SrcComponent  "Wm"
+      SrcTerminal   1
+      DstComponent  "Rth"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "IGBT1"
+      SrcTerminal   2
+      Points        [495, 280]
+      Branch {
+        Points        [580, 280]
+        DstComponent  "Vigbt"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [495, 330]
+        Branch {
+          DstComponent  "D1"
+          DstTerminal   2
+        }
+        Branch {
+          DstComponent  "L1"
+          DstTerminal   2
+        }
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R1"
+      SrcTerminal   1
+      Points        [610, 345]
+      Branch {
+        Points        [610, 330; 590, 330]
+        Branch {
+          DstComponent  "Am1"
+          DstTerminal   2
+        }
+        Branch {
+          DstComponent  "C1"
+          DstTerminal   1
+        }
+      }
+      Branch {
+        Points        [670, 345]
+        DstComponent  "Vout"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "L1"
+      SrcTerminal   1
+      DstComponent  "Am1"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vout1"
+      SrcTerminal   3
+      Points        [335, 355; 335, 295; 715, 295; 715, 340]
+      DstComponent  "Scope1"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vout"
+      SrcTerminal   3
+      Points        [690, 390; 690, 370; 700, 370]
+      Branch {
+        DstComponent  "Scope1"
+        DstTerminal   4
+      }
+      Branch {
+        DstComponent  "Mux"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Am1"
+      SrcTerminal   3
+      Points        [625, 315]
+      Branch {
+        Points        [675, 315; 675, 360]
+        DstComponent  "Scope1"
+        DstTerminal   3
+      }
+      Branch {
+        Points        [625, 455]
+        DstComponent  "Mux"
+        DstTerminal   3
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Mux"
+      SrcTerminal   1
+      Points        [750, 450; 750, 380]
+      DstComponent  "Scope1"
+      DstTerminal   5
+    }
+  }
+  ProbeBlock {
+    Tag           "Buck converter - inductor as a current source -- thermal - "
+"Copy/Probe"
+    Probe {
+      Component     "IGBT1"
+      Path          ""
+      Signals       {"IGBT conductivity"}
+    }
+    Probe {
+      Component     "Heat Sink"
+      Path          ""
+      Signals       {"Temperature"}
+    }
+    Probe {
+      Component     "Wm"
+      Path          ""
+      Signals       {"Measured heat flow"}
+    }
+  }
+}
